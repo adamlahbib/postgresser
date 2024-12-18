@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "https://github.com/adamlahbib/postgresser/api/proto;postgres";
+
+service PostgresService {
+    rpc CreatePostgres(CreatePostgresRequest) returns (CreatePostgresResponse);
+    rpc UpdatePostgres(UpdatePostgresRequest) returns (UpdatePostgresResponse);
+    rpc DeletePostgres(DeletePostgresRequest) returns (DeletePostgresResponse);
+}
+
+message CreatePostgresRequest {
+    string dbname = 1;
+    string username = 2;
+    string password = 3;
+    int32 port = 4;
+    int32 replicas = 5;
+    string capacity = 6;
+    string accessmode = 7;
+}
+
+message CreatePostgresResponse {
+    string id = 1;
+}
+
+message UpdatePostgresRequest {
+    string id = 1;
+    int32 replicas = 2;
+}
+
+message UpdatePostgresResponse {}
+
+message DeletePostgresRequest {
+    string id = 1;
+}
+
+message DeletePostgresResponse {}
